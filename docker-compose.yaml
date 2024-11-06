@@ -1,0 +1,16 @@
+services:
+  # monitor of teeworlds servers
+  tw-discord-econ-fifo:
+    container_name: tw-discord-econ-fifo
+
+    # uncomment to build from source
+    build: .
+
+    # comment when building from source
+    #image: ghcr.io/jxsl13/tw-discord-econ-fifo:latest # you might want to use a specific tag here like v0.2.x
+    restart: unless-stopped
+    environment:
+      DISCORD_TOKEN: ${DISCORD_TOKEN:?err}
+      DISCORD_CHANNEL: ${DISCORD_CHANNEL:?err}
+      ECON_ADDRESS: ${ECON_ADDRESS:?err}
+      ECON_PASSWORD: ${ECON_PASSWORD:?err}
